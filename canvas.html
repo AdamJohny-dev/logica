@@ -1,0 +1,144 @@
+<canvas width="600" height="400">
+	
+
+
+</canvas>
+
+<script id="funcoes-canvas">
+	
+	function cresceCirculo(x,y,evento){
+		if (evento.shiftKey) {
+
+		for(var i = 10; i < 100; i++){
+		
+
+			pincel.fillStyle = 'blue';
+		    pincel.beginPath();
+		    pincel.arc(x, y, i, 0, 2*3.14);
+		    pincel.fill();
+
+		    
+		}
+	   }
+	}
+
+	function desenhaCirculo(x,y,raio){
+
+		pincel.fillStyle = 'blue';
+		pincel.beginPath();
+		pincel.arc(x,y,raio,0,2*Math.PI);
+		pincel.fill();
+
+		console.log(x + ", " + y);
+		//console.log(evento);
+	}
+
+	function limpaTela(){
+		pincel.clearRect(0,0,600,400);
+	}
+
+	function exibeMensagemNoConsole(){
+		console.log("Chamei função!");
+	}
+
+	//variaveis fora da funcao, para ter um valor inicial
+	var x = 20;
+	var raio = 10;
+	var y = 20;
+	var sentido = 1;
+
+	// códigos do teclado
+
+    var esquerda = 37
+    var cima = 38
+    var direita = 39
+    var baixo = 40
+
+    var taxa = 10;
+
+	function atualizaTela(){
+		
+		limpaTela();
+		
+		
+		desenhaCirculo(x,y,raio);
+		if(sentido){
+			x++;
+			raio+= 0.01;
+
+		}else{
+			x--;
+			raio-= 0.01;
+		}
+		if(x == 0){
+			sentido = 1;
+		}
+		if(x == 600){
+			sentido = 0;
+		}
+
+	}
+
+	function leDoTeclado(evento) {
+
+        if(evento.keyCode == cima) {
+
+            y = y - taxa;
+
+        } else if (evento.keyCode == baixo) {
+
+            y = y + taxa;
+
+        } else if (evento.keyCode == esquerda) {
+
+            x = x - taxa;
+
+        } else if (evento.keyCode == direita) {
+
+            x = x + taxa;
+        }
+    }
+	
+
+</script>
+
+<script>
+
+	var tela = document.querySelector('canvas');
+	var pincel = tela.getContext('2d');
+
+	pincel.fillStyle = 'lightgrey';
+	pincel.fillRect(0, 0, 600, 400);
+
+	// pincel.fillStyle = 'green';
+	// pincel.fillRect(0, 0, 200, 400);
+
+	// pincel.fillStyle = 'red';
+	// pincel.fillRect(400, 0, 200, 400);
+
+	// pincel.fillStyle = 'yellow';
+	// pincel.beginPath();
+	// pincel.moveTo(300,200);
+	// pincel.lineTo(200,400);
+	// pincel.lineTo(400,400);
+	// pincel.fill();
+
+	// pincel.fillStyle = 'blue';
+	// pincel.beginPath();
+	// pincel.arc(300, 200, 50, 0, 2*3.14);
+	// pincel.fill();
+
+
+	// tela.onclick = desenhaCirculo;
+
+	//var x = evento.pageX - tela.offsetLeft;
+	//var y = evento.pageY - tela.offsetTop;
+	
+	//limpaTela();
+	//desenhaCirculo(x,y,raio);
+	//setInterval(exibeMensagemNoConsole,20);
+	setInterval(atualizaTela,5);
+
+	document.onkeydown = leDoTeclado;
+	
+</script>

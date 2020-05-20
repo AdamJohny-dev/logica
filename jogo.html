@@ -1,0 +1,67 @@
+<canvas width="600" height="400"></canvas>
+
+<script id="scripts-do-jogo">
+	
+	function desenhaCirculo(x,y,raio,cor){
+
+		pincel.fillStyle = cor;
+		pincel.beginPath();
+		pincel.arc(x,y,raio,0,2*Math.PI);
+		pincel.fill();
+	}
+
+	function limpaTela(){
+
+		pincel.clearRect(0,0,600,400);
+	}
+
+	function desenhaAlvo(x,y,raio){
+
+		desenhaCirculo(x,y,raio+20,'red');
+		desenhaCirculo(x,y,raio+10,'white');
+		desenhaCirculo(x,y,raio,'red');
+	}
+
+
+	var x;
+	var y;
+	var raio;
+
+	function atualizaTela(){
+
+		limpaTela();
+	    x = Math.round(Math.random()*600);
+	    y = Math.round(Math.random()*400);
+		raio = 10;
+
+		desenhaAlvo(x,y,raio);
+
+	}
+
+	function dispara(evento){
+
+		var xMouse = evento.pageX - tela.offsetLeft;
+		var yMouse = evento.pageY - tela.offsetTop;
+
+		if((xMouse > x - raio) && (xMouse < x + raio)
+			&& (yMouse > y - raio) && (yMouse < y + raio) ){
+
+			alert('Acertou!!!');
+		}
+	}
+
+</script>
+
+
+<script>
+	var tela = document.querySelector('canvas');
+	var pincel = tela.getContext('2d');
+
+	pincel.fillStyle = 'lightgrey';
+	pincel.fillRect(0, 0, 600, 400);
+
+	setInterval(atualizaTela,1000);
+
+	tela.onclick = dispara;
+
+</script>

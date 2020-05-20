@@ -1,0 +1,123 @@
+<meta charset="utf-8">
+<script>
+	function pulaLinha(){
+		document.write("<br>");
+	}
+
+	function mostra(texto){
+		//this.texto = texto;
+		document.write(texto);
+	}
+
+	function calculaIMC(peso,altura){ 
+		return pesoUser / Math.pow(alturaUser,2);
+	}
+
+	function calculaPontosDoSeuTime(vitorias, empates){ 
+		return parseInt(vitorias)*3 + parseInt(empates);
+	}
+
+	function adivinhaNumero(chute){
+		var chances = 2;
+		var numeroPensado = Math.round(Math.random()*10);
+		console.log(numeroPensado);
+		while(chances > 0){
+			if(numeroPensado == chute){
+				return ("Você acertou!");
+			}else{
+				alert("Errou! Você tem mais "+ chances +" chance(s)!");
+				chute = (parseInt(prompt("Digite o seu chute!")));
+				chances--;
+			}
+			
+		}
+		return("Número certo: "+ numeroPensado);
+	}
+
+	function calculaAnoDeCopas(inicioAnoDeCopa, finalAnoDeCopa){
+		while(inicioAnoDeCopa < finalAnoDeCopa){
+			mostra("Teve Copa do Mundo em " + inicioAnoDeCopa);
+			inicioAnoDeCopa += 4;
+			pulaLinha();
+		}
+	}
+
+	function calculaMedia(quantidadeDePessoas){
+		var somaDasIdades = 0;
+		var j = 1;
+		for(var i=quantidadeDePessoas; i>0; i--){
+			var idade = parseInt(prompt("Digite a idade da pessoa número " + j));
+			while(isNaN(idade)){
+				idade = parseInt(prompt("Digite a idade da pessoa número " + j));
+			}
+			somaDasIdades = somaDasIdades + idade;
+			j++;
+		}
+		return somaDasIdades/quantidadeDePessoas;
+	}
+
+
+</script>
+
+<!--
+<script id="imc">
+	var nome = prompt("Diga-nos seu nome: ")
+	var alturaUser = prompt(nome + ", informe a sua altura: ");
+	var pesoUser = prompt(nome + ", informe o seu peso: ");
+	var imcCalculado = calculaIMC(pesoUser, alturaUser);
+
+	mostra(nome + ", o seu IMC é: "+calculaIMC(pesoUser, alturaUser));
+	pulaLinha();
+
+	if(imcCalculado < 18.5){
+		mostra("Você está abaixo do peso! :x")
+	}else if(imcCalculado < 25){
+		mostra("Você está com o peso ideal! :)")
+	}else{
+		mostra("Tá meio gordinho, precisa emagrecer :/")
+	}
+
+
+</script>
+-->
+
+<!--
+<script id="futebol">
+
+	var vitorias = prompt("Qual o número de vitórias do seu time? ");
+	var empates = prompt("Qual o número de empates do seu time? ");
+	var pontosEm2019 = 50;
+
+	var decisao = calculaPontosDoSeuTime(vitorias, empates);
+
+	if(decisao < pontosEm2019){
+		mostra("Seu time está pior que o do ano passado!");
+	}else if(decisao > pontosEm2019){
+		mostra("Seu time está melhor que o do ano passado!");
+	}else{
+		mostra("Seu time está igual ao do ano passado!");
+	}
+	pulaLinha();
+	mostra("Pontuação atual: "+decisao);
+
+</script>
+-->
+<script id="scripts-variados">
+	//var chute = parseInt(prompt("Digite o seu chute!"));
+	//mostra(adivinhaNumero(chute));
+
+	//var inicioAnoDeCopa = parseInt(prompt("Entre com um ano de Copa do Mundo: "));
+	//var finalAnoDeCopa = parseInt(prompt("Entre com a última data: "));
+
+	//calculaAnoDeCopas(inicioAnoDeCopa, finalAnoDeCopa);
+
+	//var quantidadeDePessoas = parseInt(prompt("Informe o número de pessoas: "));
+	//while(isNaN(quantidadeDePessoas) || quantidadeDePessoas == 0){
+		//quantidadeDePessoas = parseInt(prompt("Insira um número válido!"));
+	//}
+	//mostra("A média de idade dessas pessoas é: " + calculaMedia(quantidadeDePessoas));
+
+
+
+
+</script>
