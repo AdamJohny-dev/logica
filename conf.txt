@@ -1,1 +1,4 @@
 Project designed by Adam Johny
+
+Settings:
+Level> Beginner
